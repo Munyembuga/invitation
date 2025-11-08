@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egide & Adeline Wedding</title>
+    <link rel="icon" type="image/x-icon" href="assets/hero-bg.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Elegant Rose Gold & Deep Navy Palette
+                        rose: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843'
+                        },
+                        gold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f'
+                        },
+                        midnight: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'script': ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
+
+        :root {
+            --primary: #ec4899;
+            --primary-light: #f472b6;
+            --primary-dark: #be185d;
+            --secondary: #f59e0b;
+            --secondary-light: #fbbf24;
+            --accent: #0f172a;
+            --accent-light: #1e293b;
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(15, 23, 42, 0.8);
+            --glass-border: rgba(236, 72, 153, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .glass-light {
+            background: rgba(248, 250, 252, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.2s ease;
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+        }
+
+        /* Navigation */
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero section enhancements */
+        .hero-overlay {
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.9) 0%, 
+                rgba(30, 41, 59, 0.8) 30%, 
+                rgba(236, 72, 153, 0.1) 70%, 
+                rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(236, 72, 153, 0.3);
+            font-size: 20px;
+            animation: float-heart 15s infinite linear;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Typography improvements */
+        .hero-title {
+            background: linear-gradient(135deg, #ffffff 0%, #f472b6 50%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Enhanced countdown */
+        .countdown-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown-item {
+            background: linear-gradient(145deg, rgba(248, 250, 252, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .countdown-item:hover::before {
+            left: 100%;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3);
+            border-color: var(--primary);
+        }
+
+        /* Card improvements */
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(236, 72, 153, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Gallery enhancements */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(236, 72, 153, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal improvements */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animation enhancements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .countdown-container {
+                padding: 1rem;
+            }
+            
+            .countdown-item {
+                padding: 1rem 0.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--accent);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--primary-light), var(--secondary-light));
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="font-script text-3xl text-rose-400">E & A</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-sm uppercase tracking-wider text-slate-300 hover:text-rose-400">Home</a>
+                    <a href="#couple" class="nav-link text-sm uppercase tracking-wider text-slate-300 hover:text-rose-400">Our Story</a>
+                    <a href="#venue" class="nav-link text-sm uppercase tracking-wider text-slate-300 hover:text-rose-400">Venue</a>
+                    <a href="#gallery" class="nav-link text-sm uppercase tracking-wider text-slate-300 hover:text-rose-400">Gallery</a>
+                    <a href="#contact" class="nav-link text-sm uppercase tracking-wider text-slate-300 hover:text-rose-400">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-rose-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="nav-link text-slate-300 hover:text-rose-400">Home</a>
+                    <a href="#couple" class="nav-link text-slate-300 hover:text-rose-400">Our Story</a>
+                    <a href="#venue" class="nav-link text-slate-300 hover:text-rose-400">Venue</a>
+                    <a href="#gallery" class="nav-link text-slate-300 hover:text-rose-400">Gallery</a>
+                    <a href="#contact" class="nav-link text-slate-300 hover:text-rose-400">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero-bg.jpg" alt="Egide & Adeline" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Floating Hearts Animation -->
+        <div class="floating-hearts">
+            <div class="heart" style="left: 10%; animation-delay: 0s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 20%; animation-delay: 2s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 30%; animation-delay: 4s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 40%; animation-delay: 6s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 50%; animation-delay: 8s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 60%; animation-delay: 10s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 70%; animation-delay: 12s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 80%; animation-delay: 14s;"><i class="fas fa-heart"></i></div>
+            <div class="heart" style="left: 90%; animation-delay: 16s;"><i class="fas fa-heart"></i></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto">
+            <div class="space-y-8">
+                <!-- Save the Date -->
+                <div class="opacity-0 animate-fade-up" style="animation-delay: 0.2s;">
+                    <p class="font-script text-2xl md:text-4xl text-rose-300">Save the Date</p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-amber-400 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Names -->
+                <div class="opacity-0 animate-fade-up" style="animation-delay: 0.6s;">
+                    <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold hero-title tracking-wider mb-4">
+                        Egide & Adeline
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-200 font-light tracking-[0.3em]">ARE GETTING MARRIED</p>
+                </div>
+
+                <!-- Date -->
+                <div class="opacity-0 animate-fade-up" style="animation-delay: 1s;">
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="w-16 h-px bg-gradient-to-r from-transparent to-rose-500"></div>
+                        <div class="glass-light px-6 py-3 rounded-full">
+                            <p class="text-rose-300 font-medium tracking-wider flex items-center">
+                                <i class="fas fa-calendar-heart mr-3"></i>
+                                December 27, 2025
+                            </p>
+                        </div>
+                        <div class="w-16 h-px bg-gradient-to-l from-transparent to-rose-500"></div>
+                    </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="opacity-0 animate-fade-up" style="animation-delay: 1.4s;">
+                    <div class="countdown-container max-w-4xl mx-auto">
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="countdown">
+                            <div class="countdown-item p-4 text-center">
+                                <div id="months" class="text-3xl md:text-4xl font-playfair font-bold text-white">00</div>
+                                <div class="text-xs md:text-sm text-rose-300 uppercase tracking-wider mt-2">Months</div>
+                            </div>
+                            <div class="countdown-item p-4 text-center">
+                                <div id="days" class="text-3xl md:text-4xl font-playfair font-bold text-white">00</div>
+                                <div class="text-xs md:text-sm text-rose-300 uppercase tracking-wider mt-2">Days</div>
+                            </div>
+                            <div class="countdown-item p-4 text-center">
+                                <div id="hours" class="text-3xl md:text-4xl font-playfair font-bold text-white">00</div>
+                                <div class="text-xs md:text-sm text-rose-300 uppercase tracking-wider mt-2">Hours</div>
+                            </div>
+                            <div class="countdown-item p-4 text-center">
+                                <div id="minutes" class="text-3xl md:text-4xl font-playfair font-bold text-white">00</div>
+                                <div class="text-xs md:text-sm text-rose-300 uppercase tracking-wider mt-2">Minutes</div>
+                            </div>
+                            <div class="countdown-item p-4 text-center col-span-2 md:col-span-1">
+                                <div id="seconds" class="text-3xl md:text-4xl font-playfair font-bold text-white">00</div>
+                                <div class="text-xs md:text-sm text-rose-300 uppercase tracking-wider mt-2">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="opacity-0 animate-fade-up" style="animation-delay: 1.8s;">
+                    <a href="#couple" class="inline-block glass-light px-8 py-4 rounded-full text-white hover:bg-rose-500/20 transition-all duration-300 group">
+                        <span class="flex items-center">
+                            DISCOVER OUR STORY
+                            <i class="fas fa-arrow-down ml-3 group-hover:translate-y-1 transition-transform"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="couple" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-playfair text-4xl md:text-6xl font-bold section-title mb-6">Our Love Story</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-amber-400 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">Two hearts, one destiny. Discover how our paths crossed and our love story began.</p>
+            </div>
+
+            <!-- Story Content -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <!-- Egide's Story -->
+                <div class="feature-card p-8" data-aos="fade-right">
+                    <div class="mb-6">
+                        <h3 class="font-script text-3xl text-rose-400 mb-4">Egide's Perspective</h3>
+                        <div class="w-16 h-1 bg-gradient-to-r from-rose-500 to-amber-400 rounded-full"></div>
+                    </div>
+                    <div class="space-y-4 text-slate-300 leading-relaxed">
+                        <p>From the first moment I saw Adeline, something inside me changed. She wasn't just beautiful—she had this calm, kind energy that made everything around her feel lighter.</p>
+                        <p class="italic text-rose-300">"She's the one," I told myself quietly.</p>
+                        <p>I didn't push or chase. I respected her space, waited patiently, and kept her in my prayers. I believed if it was meant to be, the moment would come.</p>
+                        <p>And it did. When I finally opened my heart to her, she looked at me with a gentle smile and said, <span class="text-amber-400 italic">"I feel the same."</span></p>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass p-4 rounded-2xl">
+                        <img src="assets/Couple4.jpg" alt="Egide & Adeline" class="w-full h-96 object-contain rounded-xl bg-slate-800/50">
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-full h-full border-2 border-rose-500/30 rounded-2xl -z-10"></div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Image -->
+                <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                    <div class="glass p-4 rounded-2xl">
+                        <img src="assets/couple1.jpg" alt="Adeline's Perspective" class="w-full h-96 object-contain rounded-xl bg-slate-800/50">
+                    </div>
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-amber-400/30 rounded-2xl -z-10"></div>
+                </div>
+
+                <!-- Adeline's Story -->
+                <div class="feature-card p-8 order-1 lg:order-2" data-aos="fade-left">
+                    <div class="mb-6">
+                        <h3 class="font-script text-3xl text-amber-400 mb-4">Adeline's Perspective</h3>
+                        <div class="w-16 h-1 bg-gradient-to-r from-amber-400 to-rose-500 rounded-full"></div>
+                    </div>
+                    <div class="space-y-4 text-slate-300 leading-relaxed">
+                        <p>He was so... silent. I hated it at first. I was used to boys who tried to impress me. Egide didn't even try. He just did the work—carried water, fixed broken things, stood in the background like he didn't matter.</p>
+                        <p>But somehow, I noticed him more than anyone.</p>
+                        <p>I started to fall for the way he listened. The way he never tried to change me. The way he looked at me like I was enough.</p>
+                        <p class="italic text-amber-300">"Egide and Adeline—our names even sound like they were meant to belong together."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue" class="py-24 bg-gradient-to-b from-midnight-900 to-midnight-800">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-playfair text-4xl md:text-6xl font-bold section-title mb-6">Join Our Celebration</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-amber-400 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">Mark your calendars for a day filled with love, joy, and unforgettable memories.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Venue Details -->
+                <div class="space-y-8" data-aos="fade-right">
+                    <!-- Location Card -->
+                    <div class="feature-card p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-rose-500 to-amber-400 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-2xl text-white font-semibold">Imbuga Garden</h3>
+                                <p class="text-slate-400">KK 541 Street, Kigali, Rwanda</p>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/c1oVcJaVXFDM5KYZ7" target="_blank" class="inline-block glass-light px-6 py-3 rounded-full text-white hover:bg-rose-500/20 transition-all duration-300">
+                            <i class="fas fa-location-arrow mr-2"></i>
+                            View on Google Maps
+                        </a>
+                    </div>
+
+                    <!-- Schedule Card -->
+                    <div class="feature-card p-8">
+                        <h3 class="font-playfair text-2xl text-white font-semibold mb-6 flex items-center">
+                            <i class="fas fa-calendar-day mr-3 text-rose-400"></i>
+                            Event Schedule
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-handshake text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Introduction & Dowry Giving</p>
+                                    <p class="text-rose-300">10:00 AM</p>
+                                    <p class="text-slate-400 text-sm">Traditional ceremony with families</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-church text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Church Ceremony</p>
+                                    <p class="text-amber-300">2:00 PM</p>
+                                    <p class="text-slate-400 text-sm">St Famille Church, Kigali</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-amber-400 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-glass-cheers text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Reception & Celebration</p>
+                                    <p class="text-rose-300">5:00 PM</p>
+                                    <p class="text-slate-400 text-sm">Dinner, dancing, and celebration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Map -->
+                <div class="space-y-8" data-aos="fade-left">
+                    <!-- Contact Card -->
+                    <div class="feature-card p-8">
+                        <h3 class="font-playfair text-2xl text-white font-semibold mb-6 flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-rose-400"></i>
+                            Event Coordinators
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <img src="assets/Adeline.jpg" alt="Egide" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-rose-400/50">
+                                <div>
+                                    <p class="font-semibold text-white">Egide</p>
+                                    <a href="https://wa.me/250787190366" class="flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                        <i class="fab fa-whatsapp mr-2"></i>
+                                        +250 787 190 366
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <img src="assets/adeline.jpg" alt="Adeline" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-amber-400/50">
+                                <div>
+                                    <p class="font-semibold text-white">Adeline</p>
+                                    <a href="https://wa.me/250788926779" class="flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                        <i class="fab fa-whatsapp mr-2"></i>
+                                        +250 788 926 779
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="feature-card p-8 h-64 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map text-4xl text-rose-400 mb-4"></i>
+                            <h4 class="font-playfair text-xl text-white mb-2">Venue Location</h4>
+                            <p class="text-slate-400">Interactive map coming soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-playfair text-4xl md:text-6xl font-bold section-title mb-6">Our Journey</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-amber-400 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">Moments captured in time, memories that last forever</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-item" onclick="openModal(0)">
+                    <div class="glass p-2">
+                        <img src="assets/couple2.jpg" alt="Gallery Image 1" class="w-full h-80 object-contain rounded-xl bg-slate-800/30">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6 rounded-2xl">
+                        <div class="text-white">
+                            <i class="fas fa-search-plus text-rose-400 mb-2"></i>
+                            <p class="font-medium">Radiant Beauty</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(1)">
+                    <div class="glass p-2">
+                        <img src="assets/couple3.jpg" alt="Gallery Image 2" class="w-full h-80 object-contain rounded-xl bg-slate-800/30">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6 rounded-2xl">
+                        <div class="text-white">
+                            <i class="fas fa-search-plus text-rose-400 mb-2"></i>
+                            <p class="font-medium">Forever in Love</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(2)">
+                    <div class="glass p-2">
+                        <img src="assets/couple1.jpg" alt="Gallery Image 3" class="w-full h-80 object-contain rounded-xl bg-slate-800/30">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6 rounded-2xl">
+                        <div class="text-white">
+                            <i class="fas fa-search-plus text-rose-400 mb-2"></i>
+                            <p class="font-medium">Perfect Together</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(3)">
+                    <div class="glass p-2">
+                        <img src="assets/Couple4.jpg" alt="Gallery Image 4" class="w-full h-80 object-contain rounded-xl bg-slate-800/30">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6 rounded-2xl">
+                        <div class="text-white">
+                            <i class="fas fa-search-plus text-rose-400 mb-2"></i>
+                            <p class="font-medium">Love Conquers All</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-midnight-800 to-midnight-900">
+        <div class="container mx-auto px-6 text-center">
+            <div data-aos="fade-up">
+                <h2 class="font-playfair text-4xl md:text-6xl font-bold section-title mb-6">Join Our Celebration</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-rose-500 to-amber-400 mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 mb-12 max-w-2xl mx-auto">Your presence on our special day would mean the world to us. We can't wait to celebrate with you!</p>
+                
+                <div class="feature-card p-8 max-w-2xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <img src="assets/Egide.jpg" alt="Egide" class="w-16 h-16 rounded-full object-cover">
+                            </div>
+                            <h4 class="font-playfair text-xl text-white mb-2">Egide</h4>
+                            <a href="https://wa.me/250787190366" class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                +250 787 190 366
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <img src="assets/Adeline.jpg" alt="Adeline" class="w-16 h-16 rounded-full object-cover">
+                            </div>
+                            <h4 class="font-playfair text-xl text-white mb-2">Adeline</h4>
+                            <a href="https://wa.me/250788926779" class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                +250 788 926 779
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-midnight-900 border-t border-rose-500/20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="font-script text-4xl text-rose-400 mb-4">Egide & Adeline</div>
+            <p class="text-amber-400 tracking-[0.3em] mb-6">December 27, 2025</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <div class="w-10 h-10 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex items-center justify-center">
+                    <i class="fas fa-heart text-white"></i>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-rings-wedding text-white"></i>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-rose-500 to-amber-400 rounded-full flex items-center justify-center">
+                    <i class="fas fa-infinity text-white"></i>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm">Crafted with <i class="fas fa-heart text-rose-500"></i> by JDeDieu</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" class="w-full h-auto max-h-screen object-contain" src="" alt="Gallery Image">
+            <button class="absolute top-4 right-4 text-white text-2xl hover:text-rose-400" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('December 27, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30.44));
+            const remainingDistanceAfterMonths = distance % (1000 * 60 * 60 * 24 * 30.44);
+            const days = Math.floor(remainingDistanceAfterMonths / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('months').textContent = String(months).padStart(2, '0');
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="col-span-5 text-center"><p class="text-rose-300 font-bold text-2xl">We are Married! 💕</p></div>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Gallery Modal
+        const galleryImages = [
+            'assets/couple2.jpg',
+            'assets/couple3.jpg',
+            'assets/couple1.jpg',
+            'assets/Couple4.jpg'
+        ];
+
+        function openModal(index) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = galleryImages[index];
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on click outside
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+
+</html>
